@@ -14,3 +14,4 @@ Currently, two official plugins are available:
 # react-advanced-patterns
 # react-advanced-patterns
 # react-advanced-patterns
+# react-advanced-patterns
