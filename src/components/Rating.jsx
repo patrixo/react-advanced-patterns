@@ -19,14 +19,15 @@ export const Rating = ({ ratingAspect, children }) => {
   );
 
   return (
-    <RatingComponent rating={rating} updateRating={updateRating}>
+    <RatingComponentMemo rating={rating} updateRating={updateRating}>
       {children}
-    </RatingComponent>
+    </RatingComponentMemo>
   );
 };
 
-const RatingComponent = memo(({ children, rating, updateRating }) => {
-  RatingComponent.displayName = 'RatingComponent';
+
+
+const RatingComponent = ({ children, rating, updateRating }) => {
   console.log('Rating render');
 
   return (
@@ -35,4 +36,6 @@ const RatingComponent = memo(({ children, rating, updateRating }) => {
       <RatingMUI value={rating} onChange={updateRating} />
     </>
   );
-});
+};
+
+const RatingComponentMemo = memo(RatingComponent)
