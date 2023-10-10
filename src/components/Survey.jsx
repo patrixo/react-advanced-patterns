@@ -1,12 +1,6 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
 
-const SurveyValuesContext = createContext(null);
-const SurveyValuesProvider = SurveyValuesContext.Provider;
-
-const SurveyMutationContext = createContext(null);
-const SurveyMutationProvider = SurveyMutationContext.Provider;
-
-SurveyValuesContext.displayName = 'SurveyContext';
+export const SurveyContext = createContext(null);
 
 export const surveyActionType = {
   update: 'UPDATE',
@@ -34,32 +28,6 @@ function surveyReducer(state, action) {
   }
 }
 
-export const useSurveyValueContext = () => {
-  const context = useContext(SurveyValuesContext);
-
-  if (!context) {
-    throw new Error(
-      'useSurveyValueContext must be used inside Survey context provider - <Survey />',
-    );
-  }
-  return context;
-};
-
-export const useSurveyRating = surveyAspect => {
-  const survey = useSurveyValueContext();
-  return survey[surveyAspect];
-};
-
-export const useSurveyMutationContext = () => {
-  const context = useContext(SurveyMutationContext);
-  if (!context) {
-    throw new Error(
-      'useSurveyMutationContext must be used inside context provider - <Survey />',
-    );
-  }
-  return context;
-};
-
 export const Survey = ({ children }) => {
   const createInitState = () => {
     return children
@@ -69,10 +37,8 @@ export const Survey = ({ children }) => {
 
   const [survey, dispatch] = useReducer(surveyReducer, null, createInitState);
   return (
-    <SurveyValuesProvider value={survey}>
-      <SurveyMutationProvider value={dispatch}>
+    <SurveyContext.Provider value={[survey, dispatch]}>
         {children}
-      </SurveyMutationProvider>
-    </SurveyValuesProvider>
+    </SurveyContext.Provider>
   );
 };

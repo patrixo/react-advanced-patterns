@@ -2,11 +2,11 @@ import { Survey } from './components/Survey';
 import { ResetButton } from './components/ResetButton';
 import { OverallRating } from './components/OverallRating';
 import { Rating } from './components/Rating';
-import { useState } from 'react';
-import { Button } from '@mui/material';
+// import { useState } from 'react';
+// import { Button } from '@mui/material';
 
 function App() {
-  const [state, setState] = useState({});
+  // const [state, setState] = useState({});
 
   return (
     <>
@@ -22,7 +22,7 @@ function App() {
 
         <ResetButton>Reset</ResetButton>
       </Survey>
-      <Button onClick={() => setState({})}>Force Rerender App</Button>
+      {/* <Button onClick={() => setState({})}>Force Rerender App</Button> */}
     </>
   );
 }
