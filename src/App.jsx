@@ -22,7 +22,7 @@ function App() {
 
         <ResetButton>Reset</ResetButton>
       </Survey>
-      <Button onClick={() => setState({})}>Rerender</Button>
+      <Button onClick={() => setState({})}>Force Rerender App</Button>
     </>
   );
 }
