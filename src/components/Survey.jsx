@@ -1,9 +1,9 @@
 import { createContext, useContext, useReducer } from 'react';
 
-const SurveyValuesContext = createContext();
+const SurveyValuesContext = createContext(null);
 const SurveyValuesProvider = SurveyValuesContext.Provider;
 
-const SurveyMutationContext = createContext();
+const SurveyMutationContext = createContext(null);
 const SurveyMutationProvider = SurveyMutationContext.Provider;
 
 SurveyValuesContext.displayName = 'SurveyContext';

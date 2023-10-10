@@ -6,7 +6,8 @@ import { useState } from 'react';
 import { Button } from '@mui/material';
 
 function App() {
-  const [state, setState] = useState();
+  const [state, setState] = useState({});
+
   return (
     <>
       <h1>Restaurant survey</h1>
