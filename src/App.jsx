@@ -14,8 +14,6 @@ function App() {
 
       <Survey>
         <Rating ratingAspect="foodQuality">Food quality</Rating>
-        <Rating ratingAspect="cleanliness">Cleanliness</Rating>
-        <Rating ratingAspect="staff">Staff</Rating>
         <Rating ratingAspect="price">Price</Rating>
 
         <OverallRating>Overall</OverallRating>

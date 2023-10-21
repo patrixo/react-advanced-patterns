@@ -8,7 +8,7 @@ export function OverallRating({ children }) {
   const overallRating =
     Object.values(state).reduce((acc, val) => acc + val, 0) /
     Object.values(state).length;
-
+    
   return (
     <>
       <h3>{children}</h3>

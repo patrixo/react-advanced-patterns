@@ -29,7 +29,7 @@ function surveyReducer(state, action) {
 }
 
 export const Survey = ({ children }) => {
-  const createInitState = () => {
+    const createInitState = () => {
     return children
       .filter(item => !!item.props.ratingAspect)
       .reduce((o, r) => ({ ...o, [r.props.ratingAspect]: 0 }), {});
