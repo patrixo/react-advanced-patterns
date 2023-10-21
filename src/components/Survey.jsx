@@ -29,16 +29,14 @@ function surveyReducer(state, action) {
 }
 
 export const Survey = ({ children }) => {
-    const createInitState = () => {
-    return children
-      .filter(item => !!item.props.ratingAspect)
-      .reduce((o, r) => ({ ...o, [r.props.ratingAspect]: 0 }), {});
-  };
+  const initState = children
+    .filter(item => !!item.props.ratingAspect)
+    .reduce((o, r) => ({ ...o, [r.props.ratingAspect]: 0 }), {});
 
-  const [survey, dispatch] = useReducer(surveyReducer, null, createInitState);
+  const [survey, dispatch] = useReducer(surveyReducer, initState);
   return (
     <SurveyContext.Provider value={[survey, dispatch]}>
-        {children}
+      {children}
     </SurveyContext.Provider>
   );
 };
