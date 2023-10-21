@@ -9,7 +9,5 @@ export const ResetButton = ({ children }) => {
     dispatch({ type: surveyActionType.reset });
   };
 
-  return (
-      <Button onClick={resetSurvey}>{children}</Button>
-  );
+  return <Button onClick={resetSurvey}>{children}</Button>;
 };
