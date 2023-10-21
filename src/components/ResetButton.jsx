@@ -10,8 +10,6 @@ export const ResetButton = ({ children }) => {
   };
 
   return (
-    <div style={{display: 'block'}}>
       <Button onClick={resetSurvey}>{children}</Button>
-    </div>
   );
 };
