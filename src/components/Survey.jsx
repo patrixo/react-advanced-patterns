@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react';
+import { Rating } from './Rating';
 
 export const SurveyContext = createContext(undefined);
 
@@ -30,7 +31,7 @@ function surveyReducer(state, action) {
 
 export const Survey = ({ children }) => {
   const initState = children
-    .filter(item => !!item.props.ratingAspect)
+    .filter(child => child.type === Rating)
     .reduce((o, r) => ({ ...o, [r.props.ratingAspect]: 0 }), {});
 
   const [survey, dispatch] = useReducer(surveyReducer, initState);
