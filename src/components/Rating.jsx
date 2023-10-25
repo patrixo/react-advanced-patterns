@@ -6,7 +6,7 @@ export const Rating = ({ ratingAspect, children }) => {
   const [state, dispatch] = useContext(SurveyContext);
 
   const updateRating = (_, ratingValue) =>
-    dispatch({ type: surveyActionType.update, ratingAspect, ratingValue });
+    dispatch({ type: surveyActionType.rate, ratingAspect, ratingValue });
 
   return (
     <>

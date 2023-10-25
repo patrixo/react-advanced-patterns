@@ -15,8 +15,7 @@ function App() {
       <Survey>
         <Rating ratingAspect="foodQuality">Food quality</Rating>
         <Rating ratingAspect="price">Price</Rating>
-        <Rating ratingAspect="staff">Staff</Rating>
-
+        
         <OverallRating>Overall</OverallRating>
 
         <ResetButton>Reset</ResetButton>

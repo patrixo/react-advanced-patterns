@@ -3,13 +3,13 @@ import { createContext, useReducer } from 'react';
 export const SurveyContext = createContext(undefined);
 
 export const surveyActionType = {
-  update: 'UPDATE',
+  rate: 'RATE',
   reset: 'RESET',
 };
 
 function surveyReducer(state, action) {
   switch (action.type) {
-    case surveyActionType.update: {
+    case surveyActionType.rate: {
       return {
         ...state,
         [action.ratingAspect]: action.ratingValue,
