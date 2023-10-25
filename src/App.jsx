@@ -13,11 +13,12 @@ function App() {
       <h1>Restaurant survey</h1>
 
       <Survey>
+        {/* Not Flexible Compounds components */}
         <Rating ratingAspect="foodQuality">Food quality</Rating>
         <Rating ratingAspect="price">Price</Rating>
         
+        {/* Flexible Compounds components */}
         <OverallRating>Overall</OverallRating>
-
         <ResetButton>Reset</ResetButton>
       </Survey>
       {/* <Button onClick={() => setState({})}>Force Rerender App</Button> */}
