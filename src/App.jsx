@@ -2,11 +2,11 @@ import { Survey } from './components/Survey';
 import { ResetButton } from './components/ResetButton';
 import { OverallRating } from './components/OverallRating';
 import { Rating } from './components/Rating';
-// import { useState } from 'react';
-// import { Button } from '@mui/material';
+import { useState } from 'react';
+import { Button } from '@mui/material';
 
 function App() {
-  // const [state, setState] = useState({});
+  const [state, setState] = useState({});
 
   return (
     <>
@@ -15,12 +15,15 @@ function App() {
       <Survey>
         <Rating ratingAspect="foodQuality">Food quality</Rating>
         <Rating ratingAspect="price">Price</Rating>
-        
+        <Rating ratingAspect="staff">Staff</Rating>
+
         {/* Flexible Compounds components */}
         <OverallRating>Overall</OverallRating>
-        <ResetButton>Reset</ResetButton>
+        <div>
+          <ResetButton>Reset</ResetButton>
+        </div>
       </Survey>
-      {/* <Button onClick={() => setState({})}>Force Rerender App</Button> */}
+      <Button onClick={() => setState({})}>Force Rerender App</Button>
     </>
   );
 }

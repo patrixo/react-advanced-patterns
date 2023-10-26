@@ -1,10 +1,8 @@
 import { Button } from '@mui/material';
-import { SurveyContext, surveyActionType } from './Survey';
-import { useContext } from 'react';
+import { surveyActionType, useSurveyContextUpdate } from './Survey';
 
 export const ResetButton = ({ children }) => {
-  const [_, dispatch] = useContext(SurveyContext);
-
+  const dispatch = useSurveyContextUpdate();
   const resetSurvey = () => {
     dispatch({ type: surveyActionType.reset });
   };

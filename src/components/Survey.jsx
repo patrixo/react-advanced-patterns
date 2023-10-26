@@ -1,7 +1,11 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import { Rating } from './Rating';
 
-export const SurveyContext = createContext(undefined);
+export const SurveyContextValue = createContext(undefined);
+export const SurveyContextUpdate = createContext(undefined);
+
+SurveyContextValue.displayName = 'SurveyContextValue';
+SurveyContextUpdate.displayName = 'SurveyContextUpdate';
 
 export const surveyActionType = {
   rate: 'RATE',
@@ -29,15 +33,42 @@ function surveyReducer(state, action) {
   }
 }
 
-export const Survey = ({ children }) => {
-  const initState = children
-    .filter(child => child.type === Rating)
-    .reduce((o, r) => ({ ...o, [r.props.ratingAspect]: 0 }), {});
+export const useSurveyContextValue = () => {
+  const context = useContext(SurveyContextValue);
 
-  const [survey, dispatch] = useReducer(surveyReducer, initState);
+  if (!context) {
+    throw new Error(
+      'useSurveyContextValue has to be used within Survey context provider',
+    );
+  }
+
+  return context;
+};
+
+export const useSurveyContextUpdate = () => {
+  const context = useContext(SurveyContextUpdate);
+
+  if (!context) {
+    throw new Error(
+      'useSurveyContextUpdate has to be used within Survey context provider',
+    );
+  }
+
+  return context;
+};
+
+export const Survey = ({ children }) => {
+  const createInitState = () =>
+    children
+      .filter(child => child.type === Rating)
+      .reduce((o, r) => ({ ...o, [r.props.ratingAspect]: 0 }), {});
+
+  const [survey, dispatch] = useReducer(surveyReducer, null, createInitState);
   return (
-    <SurveyContext.Provider value={[survey, dispatch]}>
-      {children}
-    </SurveyContext.Provider>
+    <SurveyContextUpdate.Provider value={dispatch}>
+      <SurveyContextValue.Provider value={survey}>
+        {children}
+      </SurveyContextValue.Provider>
+    </SurveyContextUpdate.Provider>
   );
 };

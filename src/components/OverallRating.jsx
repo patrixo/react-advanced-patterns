@@ -1,14 +1,13 @@
 import { Rating as RatingMUI } from '@mui/material';
-import { useContext } from 'react';
-import { SurveyContext } from './Survey';
+import { useSurveyContextValue } from './Survey';
 
 export function OverallRating({ children }) {
-  const [state] = useContext(SurveyContext);
+  const state = useSurveyContextValue();
 
   const overallRating =
     Object.values(state).reduce((acc, val) => acc + val, 0) /
     Object.values(state).length;
-    
+
   return (
     <>
       <h3>{children}</h3>
